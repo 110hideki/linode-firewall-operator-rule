@@ -1,0 +1,208 @@
+{
+    "inbound": [
+        {
+            "action": "ACCEPT",
+            "label": "kubelet_health_checks",
+            "ports": "10250",
+            "protocol": "TCP",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            }
+        },
+        {
+            "action": "ACCEPT",
+            "label": "wireguard_tunneling",
+            "ports": "51820",
+            "protocol": "UDP",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            }
+        },
+        {
+            "action": "ACCEPT",
+            "label": "calico_bgp_traffic",
+            "ports": "179",
+            "protocol": "TCP",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            }
+        },
+        {
+            "action": "ACCEPT",
+            "label": "ipencap_internal_communication",
+            "protocol": "IPENCAP",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            }
+        },
+        {
+            "action": "ACCEPT",
+            "label": "node_ports_workload_services",
+            "ports": "30000-32767",
+            "protocol": "TCP",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            }
+        },
+        {
+            "action": "DROP",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ],
+                "ipv6": [
+                    "::/0"
+                ]
+            },
+            "ports": "22",
+            "protocol": "TCP",
+            "label": "accept-inbound-SSH",
+            "description": null
+        }
+    ],
+    "inbound_policy": "DROP",
+    "outbound": [
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ],
+                "ipv6": [
+                    "::/0"
+                ]
+            },
+            "ports": "443",
+            "protocol": "TCP",
+            "label": "Accept-Outbound-443",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            },
+            "ports": "179",
+            "protocol": "TCP",
+            "label": "calico_bgp_traffic_outbound",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            },
+            "ports": "10250",
+            "protocol": "TCP",
+            "label": "kubelet_health_checks_outbound",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            },
+            "ports": "30000-32767",
+            "protocol": "TCP",
+            "label": "node_ports_workload_services_out",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            },
+            "ports": "51820",
+            "protocol": "UDP",
+            "label": "wireguard_tunneling_outbound",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            },
+            "protocol": "IPENCAP",
+            "label": "ipencap_outbound_communication",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ],
+                "ipv6": [
+                    "::/0"
+                ]
+            },
+            "ports": "53",
+            "protocol": "TCP",
+            "label": "DNS_outbound",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ],
+                "ipv6": [
+                    "::/0"
+                ]
+            },
+            "ports": "53",
+            "protocol": "UDP",
+            "label": "DNS_UDP_outbound",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "192.168.128.0/17"
+                ]
+            },
+            "ports": "8081",
+            "protocol": "TCP",
+            "label": "health-prove-log",
+            "description": null
+        },
+        {
+            "action": "ACCEPT",
+            "addresses": {
+                "ipv4": [
+                    "0.0.0.0/0"
+                ],
+                "ipv6": [
+                    "::/0"
+                ]
+            },
+            "ports": "6443",
+            "protocol": "TCP",
+            "label": "outbound-6443",
+            "description": null
+        }
+    ],
+    "outbound_policy": "DROP"
+}
